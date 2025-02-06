@@ -16,14 +16,15 @@ public class StudentService {
 
     private final RestTemplate restTemplate;
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(StudentRepository studentRepository, RestTemplate restTemplate) {
         this.studentRepository = studentRepository;
-        this.restTemplate = new RestTemplate();
-
+        this.restTemplate = restTemplate;
     }
 
     public SchoolDTO getSchoolById(Long id) {
-        return restTemplate.getForObject("http://localhost:8080/schools/" + id, SchoolDTO.class);
+        String url = "http://school/schools/" + id;
+
+        return restTemplate.getForObject(url, SchoolDTO.class);
     }
 
     public List<StudentDTO> findAll() {

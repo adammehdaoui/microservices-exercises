@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: school-service
+          uri: lb://school
+          predicates:
+            - Path=/schools/**
+
+        - id: student-service
+          uri: lb://student
+          predicates:
+            - Path=/students/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    preferIpAddress: true

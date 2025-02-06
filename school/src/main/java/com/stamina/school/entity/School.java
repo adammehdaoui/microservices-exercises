@@ -17,7 +17,7 @@ public class School {
 
     String name;
 
-    String address;
+    String address; 
 
     String directorName;
 
