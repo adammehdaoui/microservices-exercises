@@ -1,8 +1,8 @@
 package com.stamina.auth.service;
 
 import com.stamina.auth.dto.LoginResponseDTO;
-import com.stamina.auth.entity.User;
-import com.stamina.auth.repository.UserRepository;
+import com.stamina.auth.entity.Member;
+import com.stamina.auth.repository.MemberRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -15,22 +15,22 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class UserService {
+public class MemberService {
 
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     public LoginResponseDTO login(String username, String password) {
-        User u = userRepository.findByUsername(username);
+        Member member = memberRepository.findByUsername(username);
 
-        if (u == null) {
+        if (member == null) {
             return new LoginResponseDTO(HttpStatus.NOT_FOUND, "User not found", null);
         }
 
-        if (!u.getPassword().equals(password)) {
+        if (!member.getPassword().equals(password)) {
             return new LoginResponseDTO(HttpStatus.UNAUTHORIZED, "Invalid password", null);
         }
 
@@ -40,7 +40,8 @@ public class UserService {
     }
 
     public String generateToken(String username) {
-        byte[] keyBytes = Decoders.BASE64.decode("4261656C64756E67");
+        String secretKey = "riUgWOCxqKwCHdEHnm8LI/9898HQ0fqLWNoDVKeYnK8=";
+        byte[] keyBytes = Base64.getEncoder().encode(secretKey.getBytes());
         Key k = Keys.hmacShaKeyFor(keyBytes);
 
         return Jwts.builder()

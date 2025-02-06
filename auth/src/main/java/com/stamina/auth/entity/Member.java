@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
