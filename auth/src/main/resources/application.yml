@@ -1,3 +1,8 @@
+# Secrets for testing purposes only
+
+server:
+    port: 0
+
 spring:
     application:
         name: auth
@@ -15,9 +20,6 @@ spring:
         properties:
             hibernate:
             format_sql: true
-
-server:
-    port: 8083
 
 eureka:
     client:

@@ -1,5 +1,7 @@
+# Secrets for testing purposes only
+
 server:
-  port: 8082
+  port: 8080
 
 spring:
   application:
@@ -17,11 +19,15 @@ spring:
           uri: lb://school
           predicates:
             - Path=/schools/**
+          filters:
+            - AuthentificationFilter
 
         - id: student-service
           uri: lb://student
           predicates:
             - Path=/students/**
+          filters:
+            - AuthentificationFilter
 
 eureka:
   client:

@@ -4,7 +4,6 @@ import com.stamina.auth.dto.LoginResponseDTO;
 import com.stamina.auth.entity.Member;
 import com.stamina.auth.repository.MemberRepository;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,10 +16,13 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class MemberService {
 
+    private final String secretKey;
+
     private final MemberRepository memberRepository;
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+        this.secretKey = "4enGpPAg6GSKkQn1dnEBmPzrNWNhbIVkF2gMpzWqVDvHFAJZiQtnS46DkmPr3vMyFkBEtYshlKtmghF16MYEBPHlLSPUc1sXANgSHvSYktU=";
     }
 
     public LoginResponseDTO login(String username, String password) {
@@ -40,8 +42,7 @@ public class MemberService {
     }
 
     public String generateToken(String username) {
-        String secretKey = "riUgWOCxqKwCHdEHnm8LI/9898HQ0fqLWNoDVKeYnK8=";
-        byte[] keyBytes = Base64.getEncoder().encode(secretKey.getBytes());
+        byte[] keyBytes = Base64.getDecoder().decode(secretKey);
         Key k = Keys.hmacShaKeyFor(keyBytes);
 
         return Jwts.builder()
