@@ -1,0 +1,226 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "API Documentation",
+    "version" : "1.0"
+  },
+  "paths" : {
+    "/students" : {
+      "post" : {
+        "summary" : "addStudent",
+        "description" : "addStudent",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "name" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "genre" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "schoolId" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "id" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "name" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "genre" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "schoolId" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/students/school/{schoolId}" : {
+      "get" : {
+        "summary" : "getStudentsBySchoolId",
+        "description" : "getStudentsBySchoolId",
+        "parameters" : [ {
+          "name" : "schoolId",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "name" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "genre" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "schoolId" : {
+                        "type" : "integer",
+                        "description" : "",
+                        "format" : "int64"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/students/{id}" : {
+      "put" : {
+        "summary" : "updateStudent",
+        "description" : "updateStudent",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "name" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "genre" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "schoolId" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "id" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "name" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "genre" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "schoolId" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "com.stamina.student.dto.SchoolDTO" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "address" : {
+            "type" : "string",
+            "description" : ""
+          },
+          "directorName" : {
+            "type" : "string",
+            "description" : ""
+          }
+        },
+        "description" : ""
+      }
+    }
+  }
+}

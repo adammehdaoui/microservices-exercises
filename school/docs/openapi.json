@@ -1,0 +1,151 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "API Documentation",
+    "version" : "1.0"
+  },
+  "paths" : {
+    "/schools" : {
+      "post" : {
+        "summary" : "addSchool",
+        "description" : "addSchool",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "Id" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "name" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "address" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "directorName" : {
+                    "type" : "string",
+                    "description" : ""
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "Id" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "name" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "address" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "directorName" : {
+                      "type" : "string",
+                      "description" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schools/{id}" : {
+      "put" : {
+        "summary" : "updateSchool",
+        "description" : "updateSchool",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "Id" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "name" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "address" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "directorName" : {
+                    "type" : "string",
+                    "description" : ""
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "Id" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "name" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "address" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "directorName" : {
+                      "type" : "string",
+                      "description" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : { }
+}

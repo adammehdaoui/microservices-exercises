@@ -1,6 +1,7 @@
 package com.stamina.auth.service;
 
 import com.stamina.auth.dto.LoginResponseDTO;
+import com.stamina.auth.dto.RegisterResponseDTO;
 import com.stamina.auth.entity.Member;
 import com.stamina.auth.repository.MemberRepository;
 import io.jsonwebtoken.Jwts;
@@ -51,6 +52,22 @@ public class MemberService {
                 .expiration(new Date(System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(15)))
                 .signWith(k)
                 .compact();
+    }
+
+    public RegisterResponseDTO register(String username, String password) {
+        Member member = memberRepository.findByUsername(username);
+
+        if (member != null) {
+            return new RegisterResponseDTO(HttpStatus.CONFLICT, "User already exists");
+        }
+
+        member = new Member();
+        member.setUsername(username);
+        member.setPassword(password);
+
+        memberRepository.save(member);
+
+        return new RegisterResponseDTO(HttpStatus.CREATED, "User created");
     }
 
 }
