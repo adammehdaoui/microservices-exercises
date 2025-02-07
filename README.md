@@ -2,7 +2,7 @@
 
 ## Configuration des microservices et infrastructure logiciel
 
-![alt text](image.png)
+![schéma d'architecture](image.png)
 
 ## Eureka
 
@@ -27,3 +27,15 @@ Exemple :
 - Toutes les requêtes qui comprennent le chemin `/schools` sont redirigées vers le microservice `School` avec son identifiant de load balancing : `lb://school`
 
 L'API Gateway avec la dépendance Spring Cloud Gateway fonctionne par défaut en Round Robin (Instance 1 -> Instance 2 -> Instance 3 -> Instance 1 -> ...).
+
+## Authentification
+
+Le microservice `Authentification` permet de gérer l'authentification des utilisateurs.
+
+Ce microservice est accessible par l'API Gateway à l'adresse `http://localhost:8080/auth` (le port de la gateway est 8080).
+
+Il renvoie un token JWT qui permet d'authentifier l'utilisateur.
+
+Ce JWT est traité avec des filters dans le middleware de l'API Gateway pour vérifier l'authentification de l'utilisateur. 
+
+Les différents microservices sont donc uniquement accessibles si l'utilisateur est authentifié avec un JWT.

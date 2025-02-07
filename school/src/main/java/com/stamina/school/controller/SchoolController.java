@@ -2,10 +2,7 @@ package com.stamina.school.controller;
 
 import com.stamina.school.entity.School;
 import com.stamina.school.service.SchoolService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +24,21 @@ public class SchoolController {
     @GetMapping("/{id}")
     public School getSchoolById(@PathVariable Long id) {
         return schoolService.getSchoolById(id);
+    }
+
+    @PostMapping
+    public School addSchool(@RequestBody School school) {
+        return schoolService.addSchool(school);
+    }
+
+    @DeleteMapping("/{id}")
+    public School deleteSchool(@PathVariable Long id) {
+        return schoolService.deleteSchool(id);
+    }
+
+    @PutMapping("/{id}")
+    public School updateSchool(@PathVariable Long id, @RequestBody School school) {
+        return schoolService.updateSchool(id, school);
     }
 
 }

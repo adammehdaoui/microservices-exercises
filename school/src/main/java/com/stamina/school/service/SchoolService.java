@@ -22,6 +22,30 @@ public class SchoolService {
     public School getSchoolById(Long id) {
         return schoolRepository.findById(id).orElse(null);
     }
+
+    public School addSchool(School school) {
+        return schoolRepository.save(school);
+    }
+
+    public School deleteSchool(Long id) {
+        School school = schoolRepository.findById(id).orElse(null);
+        if (school != null) {
+            schoolRepository.delete(school);
+        }
+        return school;
+    }
+
+    public School updateSchool(Long id, School school) {
+        School existingSchool = schoolRepository.findById(id).orElse(null);
+        if (existingSchool != null) {
+            existingSchool.setAddress(school.getAddress());
+            existingSchool.setDirectorName(school.getDirectorName());
+            existingSchool.setName(school.getName());
+            return schoolRepository.save(existingSchool);
+        }
+        return null;
+    }
+
 }
 
 

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends MongoRepository<Student, String> {
-    List<Student> findBySchoolId(String schoolId);
+    List<Student> findBySchoolId(Long schoolId);
 }

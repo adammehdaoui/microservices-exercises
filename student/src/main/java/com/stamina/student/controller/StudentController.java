@@ -22,14 +22,24 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @GetMapping("/{schoolId}")
-    public List<Student> getStudentsBySchoolId(@PathVariable String schoolId) {
+    @GetMapping("/school/{schoolId}")
+    public List<Student> getStudentsBySchoolId(@PathVariable Long schoolId) {
         return studentService.findBySchoolId(schoolId);
     }
 
     @PostMapping()
     public Student addStudent(@RequestBody Student student) {
         return studentService.addStudent(student);
+    }
+
+    @DeleteMapping("/{id}")
+    public Student deleteStudent(@PathVariable String id) {
+        return studentService.deleteStudent(id);
+    }
+
+    @PutMapping("/{id}")
+    public Student updateStudent(@PathVariable String id, @RequestBody Student student) {
+        return studentService.updateStudent(id, student);
     }
 
 }

@@ -39,12 +39,31 @@ public class StudentService {
                 .toList();
     }
 
-    public List<Student> findBySchoolId(String schoolId) {
+    public List<Student> findBySchoolId(Long schoolId) {
         return studentRepository.findBySchoolId(schoolId);
     }
 
     public Student addStudent(Student student) {
         return studentRepository.save(student);
+    }
+
+    public Student deleteStudent(String id) {
+        Student student = studentRepository.findById(id).orElse(null);
+        if (student != null) {
+            studentRepository.delete(student);
+        }
+        return student;
+    }
+
+    public Student updateStudent(String id, Student student) {
+        Student existingStudent = studentRepository.findById(id).orElse(null);
+        if (existingStudent != null) {
+            existingStudent.setName(student.getName());
+            existingStudent.setGenre(student.getGenre());
+            existingStudent.setSchoolId(student.getSchoolId());
+            return studentRepository.save(existingStudent);
+        }
+        return null;
     }
 
 }
