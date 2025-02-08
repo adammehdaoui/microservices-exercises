@@ -71,8 +71,8 @@ Une fois une instance lancée, elle s'enregistre sur le serveur Eureka. Elle est
 
 Exemple :
 
-- La première instance du microservice `School` tourne sur le port 8081
-- Le seconde instance du microservice `School` tourne sur le port 8082
+- La première instance du microservice `School` tourne sur le port 8081 (port aléatoire)
+- Le seconde instance du microservice `School` tourne sur le port 8082 (port aléatoire)
 
 Le serveur Eureka permet de rendre les urls des microservices génériques.
 
