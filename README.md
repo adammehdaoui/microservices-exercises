@@ -48,7 +48,7 @@ cd student && mvn clean && mvn install && mvn spring-boot:run
 
 Les microservices sont configurés pour tourner sur des ports aléatoires de façon à pouvoir lancer plusieurs instances d'un même microservice.
 
-## Les endpoints API sont exportés en format JSON dans les répertoires docs de chaque microservice
+**IMPORTANT : Les endpoints API sont exportés en format JSON dans les répertoires docs de chaque microservice**
 
 - Preview pour le microservice students : 
 
