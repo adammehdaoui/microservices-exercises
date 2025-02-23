@@ -12,7 +12,7 @@
 
 ## Lancer les bases de données
 
-**IMPORTANT**: Les bases de données postgres doivent être créés à la main (avec IntelliJ Database ou PGAdmin) car elles ne sont pas créées automatiquement depuis le docker compose.
+**IMPORTANT**: Les bases de données postgres doivent être créées à la main (avec IntelliJ Database ou PGAdmin) car elles ne sont pas créées automatiquement depuis le docker compose.
 
 ```bash
 docker compose up
